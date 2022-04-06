@@ -1,6 +1,7 @@
 const { exec } = require("child_process");
 const fs = require('fs');
 const docker = require('docker');
+const b64 = require('b64');
 
 function Lambda(){
 
@@ -20,8 +21,8 @@ function Lambda(){
 
 
 function decodeUnwrap(encoded)  {
-    uEnv = b64.URLEncoding.DecodeString(encoded)
-    return string(uEnv)
+    let uEnv = b64.base64urlDecode(encoded);
+    return String(uEnv)
 }
 
 function writeCodeToTempFile(code) {
