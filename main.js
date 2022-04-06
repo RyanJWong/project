@@ -1,7 +1,8 @@
 const { exec } = require("child_process");
-const fs = require('fs')
+const fs = require('fs');
+const docker = require('docker');
 
-const data = function(){
+function Lambda(){
 
     exec("docker run --rm -v /tmp/43556789705456847598:/var/task lambci/lambda:python3.7 lambda_function.lambda_handler", (error, stdout, stderr) => {
         if (error) {
@@ -43,3 +44,5 @@ function writeCodeToTempFile(code) {
 
   
 }
+
+Lambda();
